@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Products</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+  <a style="font-weight: bold;" class="navbar-brand" href="#">PRODUCTS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/new">AddNewProduct</a>
+      <a class="nav-item nav-link active" href="/items">ProductList</a>
+    </div>
+  </div>
+</nav>
+	<div align="center">
+		<h1 style="margin-top: 5%">Product List</h1>
+		
+		<form th:action="@{/items}">
+		    <label class="h5 text-dark">Search :</label>  <input class="h5 text-dark" type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+		    &nbsp;
+		    <input class="btn btn-info" type="submit" value="Search" />
+		    &nbsp;
+		    <input class="btn btn-danger" type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+		</form>
+		
+		<table style="width:70%; margin-top: 20px " class="table table-dark" border="1" cellpadding="2" cellspacing="2">
+			<thead>
+				<tr align="center">
+					<th scope="col">Product ID</th>
+					<th scope="col">Name</th>
+					<th scope="col">Brand</th>
+					<th scope="col">Made In</th>
+					<th scope="col">Price</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product : ${listItems}" align="center">
+					<td th:text="${product.id}">Product ID</td>
+					<td th:text="${product.name}">Name</td>
+					<td th:text="${product.brand}">Brand</td>
+					<td th:text="${product.madein}">Made in</td>
+					<td th:text="${product.price}">Price ($)</td>
+					<td>
+                    	<a type="button" class="btn btn-outline-warning" th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                    	&nbsp;&nbsp;&nbsp;
+                    	<a type="button" class="btn btn-outline-danger" th:href="@{'/delete/' + ${product.id}}">Delete</a>
+                </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+	    function clearSearch() {
+	        window.location = "[[@{/items}]]";
+	    }
+	</script>
+</body>
+</html>
