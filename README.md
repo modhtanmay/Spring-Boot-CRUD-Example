@@ -20,6 +20,20 @@ RAD (Rapid Application Development) feature to the Spring Framework.Spring MVC: 
 development, administration, database design, creation and maintenance into a single integrated development environment for the 
 MySQL database system.
 
+# Screens Sample
+
+## Product Page
+![Product Page](CrudOperations/src/main/resources/images/items.png)
+
+## Create Product Page
+![Product Page](CrudOperations/src/main/resources/images/createProduct.png)
+
+## Edit Product
+![Product Page](CrudOperations/src/main/resources/images/editProduct.png)
+
+## Search Bar Fetch Data
+![Product Page](CrudOperations/src/main/resources/images/searchBar.png)
+
 # Setup Required
 - Eclipse / Intellij IDE
 - JDK (jdk 10 and above)
